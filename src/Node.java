@@ -8,6 +8,9 @@
 //08/04/2024
 //
 
+// Node class for the program
+// This is the Node class that will be used to create the nodes for the graph.
+
 
 import java.util.ArrayList;
 import java.util.List;
