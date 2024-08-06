@@ -42,26 +42,60 @@
 //
 //        Provide at least 5 test cases and report your findings.
 
+//we will utilize our previous modules to create a complete solution that implements the functionality developed in weeks 2, 3, and 4.
+//We will create a Java program that implements the stack data structure, builds a directed graph, and performs a depth-first search to create a class compiling order.
+//These will be put together to create a complete solution that will track all the modules for a specific OS along with their dependencies.
+//The program will be able to track these dependencies as well as implement an appropriate search algorithm to create the correct graph for any given module.
+//The graph will show all the corresponding dependent modules in their correct order of dependency.
+//We will provide at least 5 test cases and report our findings.
 
-//We will separate module 2, 3, and 4 into separate classes and then call them in the main class to run the program.
-//We will create a class called Main
-//We will create a class called Stack
-//We will create a class called Graph
-//We will create a class called DepthFirstSearch
-//We will create a class called Module
-//We will create a class called ModuleDependency
-//We will create a class called ModuleDependencyGraph
-//We will create a class called ModuleDependencyGraphTest
 
 
 
 public class Main {
     public static void main(String[] args) {
-        //Create a new ModuleDependencyGraphTest object
-        ModuleDependencyGraphTest moduleDependencyGraphTest = new ModuleDependencyGraphTest();
-        //Run the test cases
-        moduleDependencyGraphTest.testModuleDependencyGraph();
+        try {
+            Tree tree = new Tree();
+
+            // Create nodes
+            Node a = new Node("A");
+            Node b = new Node("B");
+            Node c = new Node("C");
+            Node d = new Node("D");
+            Node e = new Node("E");
+            Node f = new Node("F");
+
+            // Add nodes to the tree
+            tree.addNode(a);
+            tree.addNode(b);
+            tree.addNode(c);
+            tree.addNode(d);
+            tree.addNode(e);
+            tree.addNode(f);
+
+            // Add dependencies
+            tree.addDependency(a, b);
+            tree.addDependency(a, c);
+            tree.addDependency(b, d);
+            tree.addDependency(c, d);
+            tree.addDependency(d, e);
+            tree.addDependency(e, f);
+
+            // Perform the depth-first search
+            DFS dfs = new DFS();
+            for (Node node : tree.getNodes().values()) {
+                if (!dfs.isVisited(node)) {
+                    dfs.depthFirstSearch(node);
+                }
+            }
+
+            System.out.println("Finished the program.");
+            System.exit(0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("An error happened creating the tree...");
+        }
     }
-
-
 }
